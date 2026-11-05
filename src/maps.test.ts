@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { mapBackgroundFor, weaponPadsFor } from './maps';
+import { filmLayoutFor, mapBackgroundFor, weaponPadsFor } from './maps';
 
 describe('mapBackgroundFor', () => {
   it('returns an image file name and normalized extents', () => {
@@ -12,6 +12,15 @@ describe('mapBackgroundFor', () => {
 
   it('is undefined for an unknown map', () => {
     assert.equal(mapBackgroundFor('No Such Map'), undefined);
+  });
+});
+
+describe('filmLayoutFor', () => {
+  it("resolves Bazaar's API asset ID to its position layout", () => {
+    assert.deepEqual(filmLayoutFor('298d5036-cd43-47b3-a4bd-31e127566593'), {
+      gateBits: 5,
+      axisBits: [17, 17, 16],
+    });
   });
 });
 

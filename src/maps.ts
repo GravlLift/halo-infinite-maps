@@ -77,6 +77,9 @@ const MAP_ALIASES: Record<string, string> = {
   // Empyrean (ranked variant)
   '70dd38c5-2eb7-4db3-8901-0dfca292ff18':
     'd035fc3e-f298-4c14-9487-465be2e1dc1f',
+  // Bazaar API asset ID
+  '298d5036-cd43-47b3-a4bd-31e127566593':
+    '3e1e4cec-4f2c-44c6-b8d2-96b85c66c702',
 };
 
 const ROLES_BY_CATEGORY: Partial<Record<number, string[]>> = {

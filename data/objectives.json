@@ -3659,6 +3659,10 @@
       "minY": -361.43918,
       "maxY": 1047.0077
     },
+    "quant": {
+      "axisWidths": [17, 17, 16],
+      "regionIndexBits": 1
+    },
     "objectives": [
       {
         "role": "extraction_zone",
