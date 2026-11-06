@@ -1,6 +1,7 @@
 import catalog from '../data/objectives.json';
 import weaponPadCatalog from '../data/weapon-pads.json';
 import backgroundCatalog from '../data/backgrounds.json';
+import filmLayouts from '../data/film-layouts.json';
 
 interface CatalogShape {
   family: string;
@@ -37,6 +38,20 @@ export function filmLayoutFor(
   const [x, y, z] = quant.axisWidths;
   // Four fixed gate bits precede the region index.
   return { gateBits: 4 + quant.regionIndexBits, axisBits: [x, y, z] };
+}
+
+export function filmWorldBoundsFor(mapId: string):
+  | { min: [number, number, number]; max: [number, number, number] }
+  | undefined {
+  const entry = maps[MAP_ALIASES[mapId] ?? mapId];
+  if (!entry) return undefined;
+  const layouts: Record<string, { zBounds?: number[] }> = filmLayouts.layouts;
+  const zBounds = layouts[entry.name.toLowerCase().replace(/ - ranked$/, '')]?.zBounds;
+  if (!zBounds || zBounds.length !== 2) return undefined;
+  return {
+    min: [entry.bounds.minX, entry.bounds.minY, zBounds[0]],
+    max: [entry.bounds.maxX, entry.bounds.maxY, zBounds[1]],
+  };
 }
 
 /** An objective placed in the same normalized space as film positions. */

@@ -1,6 +1,6 @@
 {
   "about": "Film position layouts that automatic detection cannot recover, measured from films. Keyed by lowercase base map name (variants such as '- Ranked' share it). regionIndexBits is the width of the BSP region index that follows the four fixed gate bits.",
   "layouts": {
-    "live fire": { "axisWidths": [12, 12, 11], "regionIndexBits": 2 }
+    "live fire": { "axisWidths": [12, 12, 11], "regionIndexBits": 2, "zBounds": [-9.330649, 13.5679] }
   }
 }
