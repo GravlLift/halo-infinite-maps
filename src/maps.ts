@@ -40,13 +40,16 @@ export function filmLayoutFor(
   return { gateBits: 4 + quant.regionIndexBits, axisBits: [x, y, z] };
 }
 
-export function filmWorldBoundsFor(mapId: string):
+export function filmWorldBoundsFor(
+  mapId: string,
+):
   | { min: [number, number, number]; max: [number, number, number] }
   | undefined {
   const entry = maps[MAP_ALIASES[mapId] ?? mapId];
   if (!entry) return undefined;
   const layouts: Record<string, { zBounds?: number[] }> = filmLayouts.layouts;
-  const zBounds = layouts[entry.name.toLowerCase().replace(/ - ranked$/, '')]?.zBounds;
+  const zBounds =
+    layouts[entry.name.toLowerCase().replace(/ - ranked$/, '')]?.zBounds;
   if (!zBounds || zBounds.length !== 2) return undefined;
   return {
     min: [entry.bounds.minX, entry.bounds.minY, zBounds[0]],

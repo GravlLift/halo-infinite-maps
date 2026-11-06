@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { filmLayoutFor, filmWorldBoundsFor, mapBackgroundFor, weaponPadsFor } from './maps';
+import {
+  filmLayoutFor,
+  filmWorldBoundsFor,
+  mapBackgroundFor,
+  weaponPadsFor,
+} from './maps';
 
 describe('mapBackgroundFor', () => {
   it('returns an image file name and normalized extents', () => {
@@ -17,10 +22,13 @@ describe('mapBackgroundFor', () => {
 
 describe('filmLayoutFor', () => {
   it('provides verified three-axis bounds for Live Fire', () => {
-    assert.deepEqual(filmWorldBoundsFor('309253f8-7a75-48ff-83e1-e7fb3db2ac47'), {
-      min: [-16.719454, -10.102863, -9.330649],
-      max: [46.513535, 53.67172, 13.5679],
-    });
+    assert.deepEqual(
+      filmWorldBoundsFor('309253f8-7a75-48ff-83e1-e7fb3db2ac47'),
+      {
+        min: [-16.719454, -10.102863, -9.330649],
+        max: [46.513535, 53.67172, 13.5679],
+      },
+    );
     assert.equal(filmWorldBoundsFor('unknown'), undefined);
   });
   it("resolves Bazaar's API asset ID to its position layout", () => {
