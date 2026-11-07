@@ -95,6 +95,9 @@ const MAP_ALIASES: Record<string, string> = {
   // Empyrean (ranked variant)
   '70dd38c5-2eb7-4db3-8901-0dfca292ff18':
     'd035fc3e-f298-4c14-9487-465be2e1dc1f',
+  // Fortress (ranked variant)
+  'a54808fb-9bf5-432a-a3c3-f76cbea944c1':
+    '0d1c9255-d912-416c-befc-5f3e5e176df2',
   // Bazaar API asset ID
   '298d5036-cd43-47b3-a4bd-31e127566593':
     '3e1e4cec-4f2c-44c6-b8d2-96b85c66c702',

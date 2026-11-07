@@ -3,7 +3,10 @@ import { describe, it } from 'node:test';
 import {
   filmLayoutFor,
   filmWorldBoundsFor,
+  GameVariantCategory,
   mapBackgroundFor,
+  mapObjectivesFor,
+  normalizedPerMeter,
   weaponPadsFor,
 } from './maps';
 
@@ -36,6 +39,25 @@ describe('filmLayoutFor', () => {
       gateBits: 5,
       axisBits: [17, 17, 16],
     });
+  });
+});
+
+describe('ranked Fortress', () => {
+  it('uses the Fortress objectives and film coordinates', () => {
+    const ranked = 'a54808fb-9bf5-432a-a3c3-f76cbea944c1';
+    const fortress = '0d1c9255-d912-416c-befc-5f3e5e176df2';
+    const objectives = mapObjectivesFor(
+      ranked,
+      GameVariantCategory.MultiplayerCtf,
+    );
+    assert.ok(objectives.some((objective) => objective.role === 'flag_spawn'));
+    assert.deepEqual(
+      objectives,
+      mapObjectivesFor(fortress, GameVariantCategory.MultiplayerCtf),
+    );
+    assert.ok(normalizedPerMeter(ranked));
+    assert.equal(normalizedPerMeter(ranked), normalizedPerMeter(fortress));
+    assert.deepEqual(filmWorldBoundsFor(ranked), filmWorldBoundsFor(fortress));
   });
 });
 
