@@ -57,6 +57,13 @@ export function filmWorldBoundsFor(
   };
 }
 
+/** Horizontal world bounds used to place film keyframe positions on the map. */
+export function filmPlaneBoundsFor(
+  mapId: string,
+): { minX: number; maxX: number; minY: number; maxY: number } | undefined {
+  return maps[MAP_ALIASES[mapId] ?? mapId]?.bounds;
+}
+
 /** An objective placed in the same normalized space as film positions. */
 export interface MapObjective {
   role: string;

@@ -1,6 +1,7 @@
 export {
   GameVariantCategory,
   filmLayoutFor,
+  filmPlaneBoundsFor,
   filmWorldBoundsFor,
   mapBackgroundFor,
   mapObjectivesFor,

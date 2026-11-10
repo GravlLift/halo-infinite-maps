@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import {
   filmLayoutFor,
+  filmPlaneBoundsFor,
   filmWorldBoundsFor,
   GameVariantCategory,
   mapBackgroundFor,
@@ -24,6 +25,11 @@ describe('mapBackgroundFor', () => {
 });
 
 describe('filmLayoutFor', () => {
+  it('provides horizontal bounds for maps without vertical calibration', () => {
+    const bounds = filmPlaneBoundsFor('70dd38c5-2eb7-4db3-8901-0dfca292ff18');
+    assert.ok(bounds && bounds.maxX > bounds.minX && bounds.maxY > bounds.minY);
+    assert.equal(filmPlaneBoundsFor('unknown'), undefined);
+  });
   it('provides verified three-axis bounds for Live Fire', () => {
     assert.deepEqual(
       filmWorldBoundsFor('309253f8-7a75-48ff-83e1-e7fb3db2ac47'),
